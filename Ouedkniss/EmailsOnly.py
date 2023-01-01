@@ -3,13 +3,11 @@ from bs4 import BeautifulSoup
 from selenium.webdriver import Chrome
 from selenium.webdriver.chrome.service import Service
 import pandas as pd
-Email = []
-Title = []
 
 driver_service = Service(executable_path=r"C:\Users\Lilia\Desktop\WebScraping\chromedriver.exe")
 driver = Chrome(service=driver_service)
 
-def get_URLs():
+def get_URLs(Email, Title):
  graphql_url = "https://api.ouedkniss.com/graphql"
  i = 0
 
@@ -47,24 +45,30 @@ def get_URLs():
         id = event['id']
         path = event['slug']
         url = path+'-d'+id
-        title = event['title']
+        title = event['title'].encode('utf-8')
+        
         
         driver.get('https://www.ouedkniss.com/'+url)
         soup = BeautifulSoup(driver.page_source, 'lxml')
         email = soup.find_all('span', class_='v-chip__content')
         n = email.__len__() - 1
-        print(title ," | ", email[n].text)
-        Email.append(email[n].text)
-        Title.append(title)
-        print('this is the email number: ', i)
-        pass
+        if n >1:
+         print(title, ' | ',email[n].text)
+         Email.append(email[n].text)
+         Title.append(title)
+         print('this is the email number: ', i)
+        
     
 def export_Excel(Email, Title):
     df = pd.DataFrame({'Tile': Title, 'Email': Email})
-    df.to_csv('Email.csv')
+    df.to_csv('Ouedkniss/Email.csv')
     
-    pass
+    
+
 if __name__=='__main__':
-    get_URLs()
-    #export_Excel(Email=Email, Title=Title)
+    Email = []
+    Title = []
+    get_URLs(Email, Title)
+    print(Email,Title)
+    export_Excel(Email=Email, Title=Title)
     pass 
