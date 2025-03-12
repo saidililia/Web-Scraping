@@ -31,7 +31,7 @@ This project is a **web scraper** designed to extract email addresses and titles
 ## Usage
 Run the script with:
 ```sh
-python scraper.py
+python EmailsOnly.py
 ```
 
 ## How It Works
