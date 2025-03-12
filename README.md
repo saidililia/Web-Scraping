@@ -19,7 +19,7 @@ This project is a **web scraper** designed to extract email addresses and titles
 ## Installation & Setup
 1. Clone the repository:
    ```sh
-   git clone https://github.com/your-username/ouedkniss-web-scraper.git
+   git clone https://github.com/saidililia/Web-Scraping.git
    ```
 2. Install dependencies:
    ```sh
@@ -58,4 +58,4 @@ Email: contact@example.com
 This project is intended for educational purposes only. Ensure compliance with **Ouedkniss's terms of service** before scraping.
 
 ## Contact
-For inquiries, reach out via [Your Email] or visit my GitHub profile: [GitHub Profile Link].
+For inquiries, reach out via Email: saidililia555@gmail.com or visit my GitHub profile: [GitHub Profile Link].
